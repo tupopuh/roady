@@ -1,1 +1,1 @@
-# I want to create a tool that will help automate the visualization of roadmaps and update them - I need a really agile template that organises a nice presentation. So I see it like a user-friendly web-site or an application that updates the visual interface online based on the entered into the tables or the form of new data on projects - dates, terms, checkpoints, responsible persons, visual support.
+# Roady
