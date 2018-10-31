@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Slideshow</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+</head>
+
+<body>
+    <div class="main-container">
+        <div class="slideshow-container">
+            <div class="mySlides fade"><img class="photo" src="sport-photo1.jpg"></div>
+            <div class="mySlides fade">
+                <div><img class="leftTop" src="Лого-кодинг3.png"></div>
+                <div><img class="rightTop" src="Лого-кодинг4.png"></div>
+                <div><img class="rightBottom" src="Лого-кодинг1.png"></div>
+                <div class="secondSectionText">1 SECTION NAME</div>
+            </div>
+            <div class="mySlides fade">
+                <div><img class="leftTop" src="Лого-кодинг3.png"></div>
+                <div><img class="rightTop" src="Лого-кодинг4.png"></div>
+                <div><img class="rightBottom" src="Лого-кодинг1.png"></div>
+                <div class="thirdSectionHeader">SOME HEADER</div>
+                <div class="thirdSectionContent">
+                    <div class="topicContainer leftTopicContainer">
+                        <div class="topicImgDiv"><img class="topicImg" src="bart.jpg"></div>
+                        <div class="topicHeader">TOPIC HEADER</div>
+                        <div class="topicDescription">Topic description</div>
+                    </div>
+                    <div class="topicContainer rightTopicContainer">
+                        <div class="topicImgDiv right"><img class="topicImg" src="lisa.jpg"></div>
+                        <div class="topicHeader">TOPIC HEADER</div>
+                        <div class="topicDescription">Topic description</div>
+                    </div>
+                    <div class="topicContainer middleTopicContainer">
+                        <div class="topicImgDiv"><img class="topicImg" src="maggie.jpg"></div>
+                        <div class="topicHeader">TOPIC HEADER</div>
+                        <div class="topicDescription">Topic description</div>
+                    </div>
+                </div>
+            </div>
+            <div class="mySlides fade"><img class="photo" src="sport-photo2.jpg"></div>
+            <div class="mySlides fade">
+                <div><img class="leftTop" src="Лого-кодинг3.png"></div>
+                <div><img class="rightTop" src="Лого-кодинг4.png"></div>
+                <div><img class="rightBottom" src="Лого-кодинг1.png"></div>
+                <div class="secondSectionText">2 SECTION NAME</div>
+            </div>
+            <div class="mySlides fade">
+                <div><img class="leftTop" src="Лого-кодинг3.png"></div>
+                <div><img class="rightTop" src="Лого-кодинг4.png"></div>
+                <div><img class="rightBottom" src="Лого-кодинг1.png"></div>
+                <div class="thirdSectionHeader">SOME HEADER</div>
+                <div class="thirdSectionContent kpi">
+                    <div class="graph graph1">Graph 1</div>
+                    <div class="graph graph2">Graph 2</div>
+                    <div class="graph graph3">Graph 3</div>
+                    <div class="graph graph4">Graph 4</div>
+                    </div>
+                </div>
+            
+            <div class="mySlides fade"><img class="photo" src="sport-photo3.jpg"></div>
+            <div class="mySlides fade">
+                <div><img class="leftTop" src="Лого-кодинг3.png"></div>
+                <div><img class="rightTop" src="Лого-кодинг4.png"></div>
+                <div><img class="rightBottom" src="Лого-кодинг1.png"></div>
+                <div class="secondSectionText">3 SECTION NAME</div>
+            </div>
+            <div class="mySlides fade">
+                <div><img class="leftTop" src="Лого-кодинг3.png"></div>
+                <div><img class="rightTop" src="Лого-кодинг4.png"></div>
+                <div><img class="rightBottom" src="Лого-кодинг1.png"></div>
+                <div class="thirdSectionHeader">SOME HEADER</div>
+                <div class="thirdSectionContent">
+                    <div class="timeline">This is a timeline</div>
+                    <div class="actor1"><img class="actor-photo" src="bart.jpg"></div>
+                    <div class="actor2"><img class="actor-photo" src="lisa.jpg"></div>
+                    <div class="actor3"><img class="actor-photo" src="maggie.jpg"></div>
+                    <div class="project-name project1">Project 1 naming</div>
+                    <div class="project-name project2">Project 2 naming</div>
+                    <div class="project-name project3">Project 3 naming</div>
+                    <div class="line line1">
+                        <div>Задача 1</div>
+                    </div>
+                    <div class="line line2">
+                        <div>Задача 2</div>
+                    </div>
+                    <div class="line line3">
+                        <div>Задача 3</div>                        
+                    </div>                    
+                </div>
+            </div>
+        </div>
+        </div>
+    </div>
+        <span class="prev" data-btn="-1">&lt;</span>
+        <span class="next" data-btn="1">&gt;</span>
+        <br>
+        <div class="PaginatorBox" style="text-align: center;">
+            <span class="dot demo active" data-id="1"></span>
+            <span class="dot demo" data-id="2"></span>
+            <span class="dot demo" data-id="3"></span>
+            <span class="dot demo" data-id="4"></span>
+            <span class="dot demo" data-id="5"></span>
+            <span class="dot demo" data-id="6"></span>
+            <span class="dot demo" data-id="7"></span>
+            <span class="dot demo" data-id="8"></span>
+            <span class="dot demo" data-id="9"></span>
+        </div>
+
+    <script>
+        (() => {
+            // start of web-page working
+            // let timer = setInterval(() => showDivs(slideIndex++), 4000); // Change image every 2 seconds
+            let slideIndex = 1; // set the slideIndex to 1 - First picture
+            showDivs(1); //call showDivs(1) to display the first image
+
+
+            // add an event on click on paginator or side buttons
+            document.body.addEventListener('click', (event) => {
+                if (event.target.hasAttribute('data-id')) {
+                    const dataId = event.target.getAttribute('data-id');
+                    slideIndex = parseInt(dataId);
+                    showDivs(slideIndex);
+                }
+                if (event.target.hasAttribute('data-btn')) {
+                    const dataBtn = event.target.getAttribute('data-btn');
+                    slideIndex += parseInt(dataBtn);
+                    showDivs(slideIndex);
+                }
+                return;
+            });
+
+            //declare the function that displays the slide and color in white the dot with the given slideIndex and make the others non-active
+            function showDivs() {
+                let slides = document.getElementsByClassName("mySlides");
+                let dots = document.getElementsByClassName("demo");
+                if (slideIndex > slides.length) { slideIndex = 1 };
+                if (slideIndex < 1) { slideIndex = slides.length };
+                for (let i = 0; i < slides.length; i++) {
+                    slides[i].style.display = "none";
+                };
+                for (i = 0; i < dots.length; i++) {
+                    dots[i].className = dots[i].className.replace(" active", "");
+                }
+                slides[slideIndex - 1].style.display = "block";
+                dots[slideIndex - 1].className += " active";
+            };
+        })();
+    </script>
+
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        .timeline {
+            display: inline-block;
+            border: 1px solid black;
+            position: absolute;
+            top: 100px;
+            left: 500px;
+            width: 650px;
+            height: 50px;
+            font-size: 30px;
+            text-align: center;
+        }
+
+        .line {
+            display: inline-block;
+            border: 1px solid black;
+            position: absolute;
+            top: 180px;
+            left: 500px;
+            width: 650px;
+            height: 110px;
+            font-size: 30px;
+            text-align: center;
+        }
+
+        .line1 {
+            top: 180px;
+        }   
+        
+        .line2 {
+            top: 380px;
+        }  
+
+        .line3 {
+            top: 580px;
+        }  
+
+        .actor-photo {
+            width: 80px;
+        }
+
+        .actor1 {
+            position: absolute;
+            top: 180px;
+            left: 100px;
+        }
+
+        .actor2 {
+            position: absolute;
+            top: 380px;
+            left: 100px;
+        }
+
+        .actor3 {
+            position: absolute;
+            top: 580px;
+            left: 100px;
+        }
+
+        .project-name {
+            display: inline-block;
+            border: 1px solid black;
+            position: absolute;
+            left: 300px;
+            width: 100px;
+            height: 110px;
+            font-size: 20px;
+            text-align: center;  
+        }
+
+        .project1 {
+            top: 180px;
+        }
+
+        .project2 {
+            top: 380px;
+        }
+
+        .project3 {
+            top: 580px;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: white;
+            margin: 0;
+            height: 0;
+        }
+
+
+        .graph {
+            display: inline-block;
+            width: 400px;
+            height: 250px;
+            /* padding: 150px; */
+            border: 1px solid black;
+            /* margin-left: 20px;
+            margin-bottom: 20px; */
+            background: rgb(0, 130, 195);
+            margin: 40px;
+            color: white;
+            font-size: 50px;
+        }
+
+        .kpi {
+            text-align: center;
+        }
+
+        .graph1 {
+            position: absolute;
+            top: 50px;
+            left: 250px;
+        }
+
+        .graph2 {
+            position: absolute;
+            top: 50px;
+            right: 250px;
+        }
+
+        .graph3 {
+            position: absolute;
+            bottom: 50px;
+            left: 250px;
+        }
+
+        .graph4 {
+            position: absolute;
+            bottom: 50px;
+            right: 250px;
+        }
+
+        .photo {
+            height: 100%;
+            display: block;
+            margin: auto;
+            padding: 20px;
+        }
+
+        .leftTop {
+            height: 120px;
+            /* width: 150px; */
+            position: absolute;
+            left: 0px;
+            top: 0px;
+        }
+
+        .rightTop {
+            height: 120px;
+            /* width: 150px; */
+            position: absolute;
+            right: 0px;
+            top: 0px;
+        }
+
+        .rightBottom {
+            height: 120px;
+            /* width: 100px; */
+            position: absolute;
+            right: 0px;
+            bottom: 0px;
+        }
+
+        .secondSectionText {
+            font-size: 200px;
+            text-align: center;
+            display: inline-block;
+            width: 100%;
+            position: absolute;
+            top: 50%;
+            margin-top: -200px;
+            color: black;
+            font-style: italic;
+            font-weight: bold;
+        }
+
+        .topicImg {
+            width: 250px;
+            height: 300px;
+        }
+
+        .topicImgDiv {
+            float: left;
+        }
+
+        .right {
+            float: right;
+        }
+
+        .topicContainer {
+            /* background-color: red; */
+            position: absolute;
+        }
+
+        .leftTopicContainer {
+            left: 30px;
+            top: 150px;
+        }
+
+        .rightTopicContainer {
+            right: 30px;
+            top: 200px;
+        }
+
+        .middleTopicContainer {
+            left: 500px;
+            bottom: 5px;
+            float: right;
+        }
+
+        .topicHeader,
+        .topicDescription {
+            overflow: hidden;
+            /* background-color: blue; */
+            color: black;
+            font-style: italic;
+            padding: 0 10px;
+        }
+
+        .topicHeader {
+            font-size: 40px;
+            font-weight: bold;
+        }
+
+        .topicDescription {
+            font-size: 20px;
+        }
+
+        .thirdSectionHeader {
+            font-size: 50px;
+            text-align: left;
+            color: black;
+            display: inline-block;
+            width: 70%;
+            position: absolute;
+            /* background-color: aqua; */
+            margin: 20px 15%;
+            font-weight: bold;
+        }
+
+        .main-container {
+            margin: 0;
+            height: 0;
+            /* background-color: darkseagreen; */
+            /* margin: 2px; */
+            /* height: 100vh;
+            width: 100vw; */
+        }
+
+        .mySlides {
+            display: none;
+            /* background-color: greenyellow; */
+            height: 100%;
+        }
+
+        img {
+            vertical-align: middle;
+        }
+
+        /* Slideshow container */
+
+        .slideshow-container {
+            /* background-color: gold; */
+            position: absolute;
+            bottom: 50px;
+            top: 0px;
+            left: 50px;
+            right: 50px;
+        }
+
+        /* Next & previous buttons */
+
+        .prev,
+        .next {
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            width: auto;
+            padding: 16px;
+            margin-top: -22px;
+            color: grey;
+            font-weight: bold;
+            font-size: 18px;
+            transition: 0.6s ease;
+            border-radius: 0 3px 3px 0;
+        }
+
+        /* Position the "next button" to the right */
+
+        .next {
+            right: 0;
+            border-radius: 3px 0 0 3px;
+        }
+
+        .PaginatorBox {
+            position: absolute;
+            bottom: 3%;
+            left: 47%;
+        }
+
+        /* On hover, add a black background color with a little bit see-through */
+
+        .prev:hover,
+        .next:hover {
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+
+        /* The dots/bullets/indicators */
+
+        .dot {
+            cursor: pointer;
+            height: 15px;
+            width: 15px;
+            margin: 0 2px;
+            background-color: #bbb;
+            border-radius: 50%;
+            display: inline-block;
+            transition: background-color 0.6s ease;
+        }
+
+        .active,
+        .dot:hover {
+            background-color: #717171;
+        }
+
+        /* Fading animation */
+
+        .fade {
+            animation-name: fade;
+            animation-duration: 1.5s;
+        }
+
+        @keyframes fade {
+            from {
+                opacity: .4
+            }
+            to {
+                opacity: 1
+            }
+        }
+
+        /* On smaller screens, decrease text size */
+
+        @media only screen and (max-width: 300px) {
+            .prev,
+            .next,
+            .text {
+                font-size: 11px
+            }
+        }
+    </style>
+</body>
+
+</html>
